@@ -1,0 +1,33 @@
+version: "3"
+services:
+  redis:
+    image: redis:latest
+    privileged: true
+    restart: always
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./redis/data:/data
+      - ./redis/conf/redis.conf:/etc/redis/redis.conf
+    command: redis-server /etc/redis/redis.conf
+  nginx:
+    image: nginx:latest
+    privileged: true
+    restart: always
+    container_name: nginx
+    volumes:
+      - ./nginx/html:/home/nginx/html
+      - ./nginx/conf:/etc/nginx
+      - ./nginx/logs:/home/nginx/logs
+    ports:
+      - "9900:9900"
+      - "9901:9901"
+      - "9902:9902"
+      - "9903:9903"
+      - "9904:9904"
+      - "9905:9905"
+      - "9906:9906"
+      - "9907:9907"
+      - "9908:9908"
+      - "9909:9909"
